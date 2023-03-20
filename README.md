@@ -153,8 +153,16 @@ After much poking around, I checked the **[ChatGPT Statistics for 2023](https://
 
 First of all, this means that we have to only depend upon code that existed in 2020 or earlier.  The easiest way to accomplish this in Haskell is to specify that the Haskell **resolver** to the last standard release in 2020.  This I looked up in the **[stack documentation](https://www.stackage.org)** where clicking on **[lts-16.11](https://www.stackage.org/lts-16.11)** reveals it was published on **2020-08-25**.
 
+## My First Chat Commmand (Again)
+
+This time we'll make sure that all code that we use has been included in the GPT database.  The safest approach is to bake in the correct **resolver** by creating the Haskell project with the following commands:
+
+``` bash
+
+```
+
 ---
 
-# Links
+## Links
 
 [^1]: I'll note that Safari wasn't (to my knowledge) responsible for any of the problems I would encounter.
