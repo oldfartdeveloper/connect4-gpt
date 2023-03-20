@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Connect4
       Lib
   other-modules:
       Paths_Connect4

@@ -157,10 +157,121 @@ First of all, this means that we have to only depend upon code that existed in 2
 
 This time we'll make sure that all code that we use has been included in the GPT database.  The safest approach is to bake in the correct **resolver** by creating the Haskell project with the following commands:
 
-``` bash
+### Subscribe to GPT-4
 
+Do this if possible; it's faster and less buggy.  Unfortunately, it will cost you $20/mo.
+
+### Create a new Haskell project
+
+Perform the following bash commands:
+```bash
+cd <your Haskell projects folder>
+mkdir connect4-gpt
+cd connect4-gpt
 ```
 
+### Send this chat command
+
+```text
+Create a `stack.yaml` file with a resolver set to `lts-16.11`
+```
+
+### Watch for the chat response which should approximate
+
+Here's a simple stack.yaml file with the resolver set to lts-16.11:
+
+```haskell
+# stack.yaml
+
+resolver: lts-16.11
+
+packages:
+- .
+
+extra-deps: []
+```
+
+This file specifies that your project will use the \``lts-16.11`\` resolver, which provides a specific set of package versions known to be compatible with each other. The \``packages`\` field lists the directories containing your project's Haskell packages (in this case, just the current directory, denoted by \``.`\`). The \``extra-deps`\` field allows you to specify additional dependencies that are not part of the resolver, but it's empty in this example.
+
+---
+
+If you get the above response, then copy the chat's response into `stack.yaml` in your Haskell project.
+
+### Send this command to generate the Haskell module
+
+```text
+create a file named Connect4.hs
+```
+
+### Watch for the Expected Chat Response
+
+Here's an example of a Haskell file named Connect4.hs that provides a basic structure for a Connect Four game:
+
+```haskell
+module Connect4
+  ( Player (..)
+  , Board
+  , newBoard
+  , displayBoard
+  , playMove
+  , checkWinner
+  ) where
+
+data Player = Red | Yellow deriving (Show, Eq)
+
+type Board = [[Maybe Player]]
+
+newBoard :: Int -> Int -> Board
+newBoard rows cols = replicate rows (replicate cols Nothing)
+
+displayBoard :: Board -> String
+displayBoard = unlines . map (concatMap cellToString)
+  where
+    cellToString Nothing = ". "
+    cellToString (Just Red) = "R "
+    cellToString (Just Yellow) = "Y "
+
+playMove :: Board -> Int -> Player -> Either String Board
+playMove board col player = undefined
+
+checkWinner :: Board -> Maybe Player
+checkWinner board = undefined
+```
+
+This code defines the basic structure of a Connect Four game in Haskell. The \`**`Player`**\` data type represents the two players, \`**`Red`**\` and \`**`Yellow`**\`. The \`**`Board`**\` type alias represents the game board as a 2D list of \`**`Maybe Player`**\` values. The \`**`newBoard`**\` function creates an empty board of the specified size. The \`**`displayBoard`**\` function converts the board into a string for display.
+
+The \`**`playMove`**\` and \`**`checkWinner`**\` functions are left undefined, as their implementations depend on the specific game logic you want to implement.
+
+---
+
+Outcomes:
+
+* If you got the above response, then copy the chat's code into the file `src/Connect4.hs` and go to the next step.
+* If the response hung, the chat probably crashed and you have to stop and figure out a work-around.
+* If you got an error message, then you fix the error and try again.
+
+Now, in your IDE you can generate the Connect4 program using these `bash` commands:
+
+```bash
+stack build
+stack run
+```
+
+### Launch a new GPT Chat Window specifying GPT-4
+
+1. In the top-left corner of the chat window, click the **New Chat** button.
+1. In the top-center of the chat window in the dropdown list named "Model", select **GPT-4**.
+1. In the new chat entry in the bottom of the now nearly-empty window, send this chat command:
+
+    ```text
+    Implement a Haskell solution implementing the Connect 4 game using the resolver lts-13.19 and the player using a sum type
+    ```
+
+### Observe the chat response
+
+The chat can respond in any one of the folllowing ways:
+
+1. It runs to completion. This will recognize in the the
 ---
 
 ## Links
