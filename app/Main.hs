@@ -1,6 +1,6 @@
 module Main (main) where
 
-import Lib
+import qualified Connect4
 
 main :: IO ()
-main = someFunc
+main = Connect4.main

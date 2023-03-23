@@ -161,9 +161,11 @@ This time we'll make sure that all code that we use has been included in the GPT
 
 Do this if possible; it's faster and less buggy.  Unfortunately, it will cost you $20/mo.
 
+
 ### Create a new Haskell project
 
 Perform the following bash commands:
+
 ```bash
 cd <your Haskell projects folder>
 mkdir connect4-gpt
@@ -171,6 +173,8 @@ cd connect4-gpt
 ```
 
 ### Send this chat command
+
+This will immediately set up the `stack.yaml` file with the correct resolver.
 
 ```text
 Create a `stack.yaml` file with a resolver set to `lts-16.11`
@@ -244,34 +248,37 @@ The \`**`playMove`**\` and \`**`checkWinner`**\` functions are left undefined, a
 
 ---
 
+> Note that there is no interaction provided for the user. This is because the programmer must define what kind of user interface is needed.  Some that come to mind:
+
+* Console.  Playing on a terminal.
+* GUI.  There is a visually appealing interface consisting of WYSIWYG components.
+* Web page.
+
+In theory, the chat can generate any of these with relatively simple commands.  First we'll do the **console**; we have instructions later on.
+
+---
+
 Outcomes:
 
 * If you got the above response, then copy the chat's code into the file `src/Connect4.hs` and go to the next step.
 * If the response hung, the chat probably crashed and you have to stop and figure out a work-around.
 * If you got an error message, then you fix the error and try again.
 
-Now, in your IDE you can generate the Connect4 program using these `bash` commands:
+Now, in your IDE you can generate the Connect4 program using these `bash` command:
 
 ```bash
 stack build
-stack run
 ```
 
-### Launch a new GPT Chat Window specifying GPT-4
+Notice that there is no target for a `stack run`, because there is no way to run the program that does anything; there is no IO.
 
-1. In the top-left corner of the chat window, click the **New Chat** button.
-1. In the top-center of the chat window in the dropdown list named "Model", select **GPT-4**.
-1. In the new chat entry in the bottom of the now nearly-empty window, send this chat command:
+### Generate a Console User Interface
 
-    ```text
-    Implement a Haskell solution implementing the Connect 4 game using the resolver lts-13.19 and the player using a sum type
-    ```
+Send the following command to the chat:
 
-### Observe the chat response
-
-The chat can respond in any one of the folllowing ways:
-
-1. It runs to completion. This will recognize in the the
+```text
+Implement a Haskell module to handle the user input and manage the game loop using a console for the Connect4.hs file above
+```
 ---
 
 ## Links
