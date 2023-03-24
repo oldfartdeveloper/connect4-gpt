@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Connect4
+      Gui
   other-modules:
       Paths_Connect4
   hs-source-dirs:
@@ -33,6 +34,7 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , gloss
   default-language: Haskell2010
 
 executable Connect4-exe
@@ -45,6 +47,7 @@ executable Connect4-exe
   build-depends:
       Connect4
     , base >=4.7 && <5
+    , gloss
   default-language: Haskell2010
 
 test-suite Connect4-test

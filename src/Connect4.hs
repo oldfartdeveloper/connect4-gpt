@@ -1,8 +1,9 @@
-module Connect4 (main) where
+module Connect4 (initialBoard, main, otherPlayer, Board, Cell, Column, Player(Red,Yellow)) where
 
 import Data.List (elemIndex, intercalate, subsequences, transpose)
 
-type Board = [[Cell]]
+type Board = [Column]
+type Column = [Cell]
 type Cell = Maybe Player
 data Player = Red | Yellow deriving (Eq, Show)
 
